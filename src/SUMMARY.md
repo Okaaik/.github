@@ -1,6 +1,6 @@
 # Summary
 
-- [Vendor Web Portal](./vendor-web-portal/overview.md)
-    - [Testing & Deployment](./vendor-web-portal/testingAndDeployment.md)
-    - [Navigation Menus](./vendor-web-portal/navigation.md)
-    - [State Management](./vendor-web-portal/stateManagement.md)
+- [Admin & Vendor Panel](./admin-vendor-panel/overview.md)
+    - [Testing & Deployment](./admin-vendor-panel/testingAndDeployment.md)
+    - [Navigation Menus](./admin-vendor-panel/navigation.md)
+    - [State Management](./admin-vendor-panel/stateManagement.md)

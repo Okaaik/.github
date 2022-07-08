@@ -1,4 +1,4 @@
-# Vendor Web Panel
+# Admin & Vendor Web Panel
 
 ## How to run the project?
 
@@ -11,8 +11,10 @@ npm run start.
 ```
 
 ### Run in docker:
+```
 docker build -t okaaik-vendor .
 docker run -it -p 8080:8080 --rm --name okaaikVendor okaaik-vendor
+```
 
 ## Routing
 
