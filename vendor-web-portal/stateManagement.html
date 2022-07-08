@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Vendor Web Portal</title>
+        <title>State Management</title>
                 
 
         <!-- Custom HTML head -->
@@ -14,21 +14,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-                <link rel="icon" href="favicon.svg">
-                        <link rel="shortcut icon" href="favicon.png">
-                <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-                <link rel="stylesheet" href="css/print.css" media="print">
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
         
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-                <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
         
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
         
@@ -36,7 +36,7 @@
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
-            var path_to_root = "";
+            var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="vendor-web-portal/overview.html"><strong aria-hidden="true">1.</strong> Vendor Web Portal</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vendor-web-portal/testingAndDeployment.html"><strong aria-hidden="true">1.1.</strong> Testing &amp; Deployment</a></li><li class="chapter-item expanded "><a href="vendor-web-portal/navigation.html"><strong aria-hidden="true">1.2.</strong> Navigation Menus</a></li><li class="chapter-item expanded "><a href="vendor-web-portal/stateManagement.html"><strong aria-hidden="true">1.3.</strong> State Management</a></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../vendor-web-portal/overview.html"><strong aria-hidden="true">1.</strong> Vendor Web Portal</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vendor-web-portal/testingAndDeployment.html"><strong aria-hidden="true">1.1.</strong> Testing &amp; Deployment</a></li><li class="chapter-item expanded "><a href="../vendor-web-portal/navigation.html"><strong aria-hidden="true">1.2.</strong> Navigation Menus</a></li><li class="chapter-item expanded "><a href="../vendor-web-portal/stateManagement.html" class="active"><strong aria-hidden="true">1.3.</strong> State Management</a></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -114,7 +114,7 @@
                     <h1 class="menu-title"></h1>
 
                     <div class="right-buttons">
-                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
                                                                         
@@ -143,64 +143,29 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="vendor-web-panel"><a class="header" href="#vendor-web-panel">Vendor Web Panel</a></h1>
-<h2 id="how-to-run-the-project"><a class="header" href="#how-to-run-the-project">How to run the project?</a></h2>
-<h3 id="running-locally"><a class="header" href="#running-locally">Running locally</a></h3>
-<ol>
-<li>Clone the project from the repo.</li>
-<li>Run the following commands:</li>
-</ol>
-<pre><code>npm install
-npm run start.
-</code></pre>
-<h3 id="run-in-docker"><a class="header" href="#run-in-docker">Run in docker:</a></h3>
-<p>docker build -t okaaik-vendor .
-docker run -it -p 8080:8080 --rm --name okaaikVendor okaaik-vendor</p>
-<h2 id="routing"><a class="header" href="#routing">Routing</a></h2>
-<p>In this section you will find how to add new routes and how we handled existing routes.</p>
-<p>You can find our template's router configuration in src/router/index.js. src/router/routes folder contains all routes of our template.</p>
-<p>You can follow our pattern or use src/router/index.js to write your routes, it's completely up to you.</p>
-<h3 id="route-meta"><a class="header" href="#route-meta">Route Meta</a></h3>
-<p>Our routes just isn't simple routes. Their meta is also required to render proper page. Let's find out each of them:</p>
-<p>pageTitle: This meta is used by breadcrumb to render Page Title. You will find this meta used in every route which have breadcrumb.
-breadcrumb: This is for rendering breadcrumb. Value of this meta is same as value of items prop of BootstrapVue's breadcrumb (opens new window)component. There will always be home at the start of breadcrumb so don't mention it in meta value.
-navActiveLink: Navigation link to active in navigation menu. This shall match to any of navigation menu item's route. Useful if you have dynamic param and want to only set single item for it in navigation menu.
-contentRenderer: Which content render to use.
-contentClass: Meta to add class to .content wrapper.</p>
-<h2 id="layout"><a class="header" href="#layout">Layout</a></h2>
-<p>About Layouts
-There are two layout types:</p>
-<h3 id="blank-layout"><a class="header" href="#blank-layout">Blank Layout</a></h3>
-<p>This is useful if you want to create pages without any other content like Authentication page where you don't need navbar, navigation menu, footer, etc.</p>
-<p>Basically this is blank page and you will create everything from scratch.</p>
-<p>How to enable blank layout for specific route?
-To create route with blank layout use route meta layout and set value to 'full'.</p>
-<pre><code>{
-    path: '/pages/authentication/login',
-    name: 'auth-login',
-    component: () =&gt; import('@/views/pages/authentication/Login.vue'),
-    meta: {
-      layout: 'full',
-      redirectIfLoggedIn: true,
-    },
-  },
-</code></pre>
-<h3 id="layout-w-layout-components"><a class="header" href="#layout-w-layout-components">Layout w/ Layout Components</a></h3>
-<p>This default layout for every route. With this layout you will get below layout components:</p>
-<ul>
-<li>Navigation Menu</li>
-<li>Navbar</li>
-<li>Footer</li>
-</ul>
+                        <p>Vuex Store
+In this page you will understand usage of Vuex Store in our template</p>
+<p>Overview
+Our project uses Vuex's module (opens new window)system to make Vuexy Store modules to use them as plug and play. You can check src/store/index.js file to know which modules are loaded at the start of the template.</p>
+<p>Each module is namespaced so there will be no conflict if you create your own store module and use same actions &amp; mutations names.</p>
+<p>As we do care about performance of project, we haven't registered all the modules from start. Still there's some modules which are dynamically registered (opens new window).</p>
+<p>Store Modules
+Let's find out what each store module has to offer.</p>
+<p>app
+This store module is common and you can say general state, getters, mutations and actions are added in this module. This module handles whole app wise state like width of current window in which your app is running.</p>
+<p>app-config
+Existing of this module is due to $themeConfig. This module holds the state of themeConfig and on change of any state it handles it's extra efforts like updating localStorage, thanks to mutations provided in this module.</p>
+<p>vertical-menu
+This store module is targeted to vertical menu. This module has single state of menu collapsed.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
-                                                    <a rel="next" href="vendor-web-portal/testingAndDeployment.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                                                    <a rel="prev" href="../vendor-web-portal/navigation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
                             </a>
+                        
                         
                         <div style="clear: both"></div>
                     </nav>
@@ -208,10 +173,10 @@ To create route with blank layout use route meta layout and set value to 'full'.
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
-                                    <a rel="next" href="vendor-web-portal/testingAndDeployment.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                                    <a rel="prev" href="../vendor-web-portal/navigation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
                     </a>
+                
                             </nav>
 
         </div>
@@ -224,13 +189,13 @@ To create route with blank layout use route meta layout and set value to 'full'.
         </script>
         
         
-                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
         
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
         
