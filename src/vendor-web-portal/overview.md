@@ -62,3 +62,4 @@ This default layout for every route. With this layout you will get below layout 
 * Navigation Menu
 * Navbar
 * Footer
+
