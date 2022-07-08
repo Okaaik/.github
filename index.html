@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Chapter 1</title>
+        <title>Vendor Web Portal</title>
                 
 
         <!-- Custom HTML head -->
@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> Chapter 1</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="vendor-web-portal/overview.html"><strong aria-hidden="true">1.</strong> Vendor Web Portal</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -143,7 +143,55 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="chapter-1"><a class="header" href="#chapter-1">Chapter 1</a></h1>
+                        <h1 id="vendor-web-panel"><a class="header" href="#vendor-web-panel">Vendor Web Panel</a></h1>
+<h2 id="how-to-run-the-project"><a class="header" href="#how-to-run-the-project">How to run the project?</a></h2>
+<h3 id="running-locally"><a class="header" href="#running-locally">Running locally</a></h3>
+<ol>
+<li>Clone the project from the repo.</li>
+<li>Run the following commands:</li>
+</ol>
+<pre><code>npm install
+npm run start.
+</code></pre>
+<h3 id="run-in-docker"><a class="header" href="#run-in-docker">Run in docker:</a></h3>
+<p>docker build -t okaaik-vendor .
+docker run -it -p 8080:8080 --rm --name okaaikVendor okaaik-vendor</p>
+<h2 id="routing"><a class="header" href="#routing">Routing</a></h2>
+<p>In this section you will find how to add new routes and how we handled existing routes.</p>
+<p>You can find our template's router configuration in src/router/index.js. src/router/routes folder contains all routes of our template.</p>
+<p>You can follow our pattern or use src/router/index.js to write your routes, it's completely up to you.</p>
+<h3 id="route-meta"><a class="header" href="#route-meta">Route Meta</a></h3>
+<p>Our routes just isn't simple routes. Their meta is also required to render proper page. Let's find out each of them:</p>
+<p>pageTitle: This meta is used by breadcrumb to render Page Title. You will find this meta used in every route which have breadcrumb.
+breadcrumb: This is for rendering breadcrumb. Value of this meta is same as value of items prop of BootstrapVue's breadcrumb (opens new window)component. There will always be home at the start of breadcrumb so don't mention it in meta value.
+navActiveLink: Navigation link to active in navigation menu. This shall match to any of navigation menu item's route. Useful if you have dynamic param and want to only set single item for it in navigation menu.
+contentRenderer: Which content render to use.
+contentClass: Meta to add class to .content wrapper.</p>
+<h2 id="layout"><a class="header" href="#layout">Layout</a></h2>
+<p>About Layouts
+There are two layout types:</p>
+<h3 id="blank-layout"><a class="header" href="#blank-layout">Blank Layout</a></h3>
+<p>This is useful if you want to create pages without any other content like Authentication page where you don't need navbar, navigation menu, footer, etc.</p>
+<p>Basically this is blank page and you will create everything from scratch.</p>
+<p>How to enable blank layout for specific route?
+To create route with blank layout use route meta layout and set value to 'full'.</p>
+<pre><code>{
+    path: '/pages/authentication/login',
+    name: 'auth-login',
+    component: () =&gt; import('@/views/pages/authentication/Login.vue'),
+    meta: {
+      layout: 'full',
+      redirectIfLoggedIn: true,
+    },
+  },
+</code></pre>
+<h3 id="layout-w-layout-components"><a class="header" href="#layout-w-layout-components">Layout w/ Layout Components</a></h3>
+<p>This default layout for every route. With this layout you will get below layout components:</p>
+<ul>
+<li>Navigation Menu</li>
+<li>Navbar</li>
+<li>Footer</li>
+</ul>
 
                     </main>
 
