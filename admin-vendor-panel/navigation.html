@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>State Management</title>
+        <title>Navigation Menus</title>
                 
 
         <!-- Custom HTML head -->
@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../vendor-web-portal/overview.html"><strong aria-hidden="true">1.</strong> Vendor Web Portal</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vendor-web-portal/testingAndDeployment.html"><strong aria-hidden="true">1.1.</strong> Testing &amp; Deployment</a></li><li class="chapter-item expanded "><a href="../vendor-web-portal/navigation.html"><strong aria-hidden="true">1.2.</strong> Navigation Menus</a></li><li class="chapter-item expanded "><a href="../vendor-web-portal/stateManagement.html" class="active"><strong aria-hidden="true">1.3.</strong> State Management</a></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../admin-vendor-panel/overview.html"><strong aria-hidden="true">1.</strong> Admin &amp; Vendor Panel</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../admin-vendor-panel/testingAndDeployment.html"><strong aria-hidden="true">1.1.</strong> Testing &amp; Deployment</a></li><li class="chapter-item expanded "><a href="../admin-vendor-panel/navigation.html" class="active"><strong aria-hidden="true">1.2.</strong> Navigation Menus</a></li><li class="chapter-item expanded "><a href="../admin-vendor-panel/stateManagement.html"><strong aria-hidden="true">1.3.</strong> State Management</a></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -143,29 +143,71 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="vuex-store"><a class="header" href="#vuex-store">Vuex Store</a></h1>
-<p>In this page you will understand usage of Vuex Store in our template</p>
-<h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
-<p>Our project uses Vuex's module (opens new window)system to make Vuexy Store modules to use them as plug and play. You can check src/store/index.js file to know which modules are loaded at the start of the template.</p>
-<p>Each module is namespaced so there will be no conflict if you create your own store module and use same actions &amp; mutations names.</p>
-<p>As we do care about performance of project, we haven't registered all the modules from start. Still there's some modules which are dynamically registered (opens new window).</p>
-<h2 id="store-modules"><a class="header" href="#store-modules">Store Modules</a></h2>
-<p>Let's find out what each store module has to offer.</p>
-<h3 id="app"><a class="header" href="#app">app</a></h3>
-<p>This store module is common and you can say general state, getters, mutations and actions are added in this module. This module handles whole app wise state like width of current window in which your app is running.</p>
-<h3 id="app-config"><a class="header" href="#app-config">app-config</a></h3>
-<p>Existing of this module is due to $themeConfig. This module holds the state of themeConfig and on change of any state it handles it's extra efforts like updating localStorage, thanks to mutations provided in this module.</p>
-<h3 id="vertical-menu"><a class="header" href="#vertical-menu">vertical-menu</a></h3>
-<p>This store module is targeted to vertical menu. This module has single state of menu collapsed.</p>
+                        <h1 id="navigation-menus"><a class="header" href="#navigation-menus">Navigation Menus</a></h1>
+<p>In this page you will find how to add/update navigation menu items.</p>
+<h2 id="vertical-navigation-menu"><a class="header" href="#vertical-navigation-menu">Vertical Navigation Menu</a></h2>
+<p>To update the vertical navigation menu items, update src/navigation/vertical/index.js file. We just created different files for different sections so we can find items easily. You can follow the same or just write the all the items in index.js file.</p>
+<p>Let's understand how to create each navigation menu item:</p>
+<h3 id="header"><a class="header" href="#header">Header</a></h3>
+<p>You can create header using simple object with single property header:</p>
+<pre><code>{
+  header: 'Apps &amp; Pages',
+}
+</code></pre>
+<h2 id="navigation-menu-link"><a class="header" href="#navigation-menu-link">Navigation Menu Link</a></h2>
+<p>This will be the route link. For creating link follow below object structure:</p>
+<pre><code>{
+  title: 'Email',
+  route: 'apps-email',
+  icon: 'MailIcon',
+}
+</code></pre>
+<p>Let's understand what each property represents:</p>
+<ul>
+<li>title property will be title (rendered text) of this link. This will be key for i18n.</li>
+<li>route is vue-router's route name (opens new window).</li>
+<li>icon property is name of feather icon which will get rendered.</li>
+</ul>
+<p>You can also use route object as value of route property.</p>
+<pre><code>{
+  title: 'John Doe',
+  route: { name: 'apps-users-view', params: { id: 21 } },
+  icon: 'UserIcon',
+}
+</code></pre>
+<p>Besides internal route of app you can also create link for external sites:</p>
+<pre><code>{
+  title: 'Documentation',
+  href: 'https://pixinvent.com/demo/vuexy-vuejs-admin-dashboard-template/documentation',
+  icon: 'FileTextIcon',
+}
+</code></pre>
+<h2 id="horizontal-navigation-menu"><a class="header" href="#horizontal-navigation-menu">Horizontal Navigation Menu</a></h2>
+<p>To update horizontal navigation menu items, update src/navigation/horizontal/index.js file. Let's understand how to create horizontal navigation menu:</p>
+<h3 id="header-1"><a class="header" href="#header-1">Header</a></h3>
+<p>Creating header is little bit different than vertical navigation menu. You need to specify icon and children of header this time:</p>
+<pre><code>{
+  header: 'Dashboards',
+  icon: 'HomeIcon',
+  children: [
+    // This is array of menu items or menu groups
+    // NOTE: You can't use menu header as children
+  ],
+}
+</code></pre>
+<p>All property purpose is same as vertical navigation menu.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                                                    <a rel="prev" href="../vendor-web-portal/navigation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                                    <a rel="prev" href="../admin-vendor-panel/testingAndDeployment.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
+                                                    <a rel="next" href="../admin-vendor-panel/stateManagement.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         
                         <div style="clear: both"></div>
                     </nav>
@@ -173,10 +215,13 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                                    <a rel="prev" href="../vendor-web-portal/navigation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                    <a rel="prev" href="../admin-vendor-panel/testingAndDeployment.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
+                                    <a rel="next" href="../admin-vendor-panel/stateManagement.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
                             </nav>
 
         </div>
