@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="admin-vendor-panel/overview.html"><strong aria-hidden="true">1.</strong> Admin &amp; Vendor Panel</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="admin-vendor-panel/testingAndDeployment.html"><strong aria-hidden="true">1.1.</strong> Testing &amp; Deployment</a></li><li class="chapter-item expanded "><a href="admin-vendor-panel/navigation.html"><strong aria-hidden="true">1.2.</strong> Navigation Menus</a></li><li class="chapter-item expanded "><a href="admin-vendor-panel/stateManagement.html"><strong aria-hidden="true">1.3.</strong> State Management</a></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="admin-vendor-panel/overview.html"><strong aria-hidden="true">1.</strong> Admin &amp; Vendor Panel</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="admin-vendor-panel/testingAndDeployment.html"><strong aria-hidden="true">1.1.</strong> Testing &amp; Deployment</a></li><li class="chapter-item expanded "><a href="admin-vendor-panel/navigation.html"><strong aria-hidden="true">1.2.</strong> Navigation Menus</a></li><li class="chapter-item expanded "><a href="admin-vendor-panel/stateManagement.html"><strong aria-hidden="true">1.3.</strong> State Management</a></li></ol></li><li class="chapter-item expanded "><a href="mobile-apps/overview.html"><strong aria-hidden="true">2.</strong> Mobile &amp; Vendor Apps</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -279,6 +279,70 @@ fireabase deploy
 <p>Existing of this module is due to $themeConfig. This module holds the state of themeConfig and on change of any state it handles it's extra efforts like updating localStorage, thanks to mutations provided in this module.</p>
 <h3 id="vertical-menu"><a class="header" href="#vertical-menu">vertical-menu</a></h3>
 <p>This store module is targeted to vertical menu. This module has single state of menu collapsed.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="mobile--vendor-apps"><a class="header" href="#mobile--vendor-apps">Mobile &amp; Vendor Apps</a></h1>
+<h2 id="project-setup"><a class="header" href="#project-setup">Project Setup</a></h2>
+<p>Tools:</p>
+<ol>
+<li>Visual Studio Code or any other IDE</li>
+<li>Android Studio</li>
+<li>XCode version 12 or above.</li>
+<li>Flutter 2.10</li>
+<li>Android SDK</li>
+</ol>
+<h2 id="usage"><a class="header" href="#usage">usage</a></h2>
+<p>Run the following command in terminal:</p>
+<pre><code>flutter clean
+flutter pub get
+</code></pre>
+<p>Navigate to ios folder in terminal:</p>
+<pre><code>cd ios
+</code></pre>
+<p>If you are using Apple M1 processor or later:</p>
+<pre><code>sudo arch -x86_64 gem install ffi
+arch -x86_64 pod install
+</code></pre>
+<p>If you are using Apple Intel Processor:</p>
+<pre><code>pod install
+</code></pre>
+<h2 id="routing-1"><a class="header" href="#routing-1">Routing</a></h2>
+<ol>
+<li>
+<p>Navigator.push()
+To switch to a new route, use the Navigator.push() method. The push() method adds a Route to the stack of routes managed by the Navigator. Where does the Route come from? You can create your own, or use a MaterialPageRoute, which is useful because it transitions to the new route using a platform-specific animation.</p>
+</li>
+<li>
+<p>Navigator.pop()
+How do you close the second route and return to the first? By using the Navigator.pop() method. The pop() method removes the current Route from the stack of routes managed by the Navigator.</p>
+</li>
+</ol>
+<h2 id="testing"><a class="header" href="#testing">Testing</a></h2>
+<ol>
+<li>Connect a device or open emulator</li>
+<li>Build the project
+Run the following command in terminal:</li>
+</ol>
+<p>if on android:</p>
+<pre><code>flutter build android
+</code></pre>
+<p>if on iOS:</p>
+<pre><code>flutter build ios
+</code></pre>
+<p>Run project</p>
+<pre><code>flutter run
+</code></pre>
+<h2 id="build-signed-apk"><a class="header" href="#build-signed-apk">Build Signed APK</a></h2>
+<ol>
+<li>Make sure okaaik.jks file is present in android -&gt; app folder</li>
+<li>Make sure key.properties file is present in android folder</li>
+<li>run flutter build apk --release in terminal</li>
+<li>for app bundle run flutter build appbundle in terminal</li>
+</ol>
+<h2 id="build-ipa-file-for-ios"><a class="header" href="#build-ipa-file-for-ios">Build .ipa file for iOS</a></h2>
+<ol>
+<li>Right click on ios folder.</li>
+<li>Select open in XCode.</li>
+<li>Click on Product -&gt; Archive.</li>
+</ol>
 
                     </main>
 
